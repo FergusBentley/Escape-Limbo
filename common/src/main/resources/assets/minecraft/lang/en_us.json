@@ -1,0 +1,20 @@
+{
+  "argument.entity.options.level.description": "Mana level",
+  "commands.experience.add.levels.success.multiple": "Gave %s mana levels to %s players",
+  "commands.experience.add.levels.success.single": "Gave %s mana levels to %s",
+  "commands.experience.add.points.success.multiple": "Gave %s mana to %s players",
+  "commands.experience.add.points.success.single": "Gave %s mana to %s",
+  "commands.experience.query.levels": "%s has %s mana levels",
+  "commands.experience.query.points": "%s has %s mana",
+  "commands.experience.set.levels.success.multiple": "Set %s mana levels on %s players",
+  "commands.experience.set.levels.success.single": "Set %s mana levels on %s",
+  "commands.experience.set.points.invalid": "Cannot set mana above the maximum for the player's current level",
+  "commands.experience.set.points.success.multiple": "Set %s mana on %s players",
+  "commands.experience.set.points.success.single": "Set %s mana on %s",
+  "entity.minecraft.experience_bottle": "Thrown Mana Bottle",
+  "entity.minecraft.experience_orb": "Mana Orb",
+  "gamerule.doMobLoot.description": "Controls resource drops from mobs, including mana orbs.",
+  "gamerule.doTileDrops.description": "Controls resource drops from blocks, including mana orbs.",
+  "item.minecraft.experience_bottle": "Mana Bottle",
+  "subtitles.entity.experience_orb.pickup": "Mana gained"
+}
