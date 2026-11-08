@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "${mod_id}",
+	"version": "${version}",
+	"name": "${mod_name}",
+	"description": "Limited respawn mode and increased difficulty.",
+	"authors": [
+		"Fergus Bentley"
+	],
+	"license": "CC-BY-4.0",
+	"environment": "*",
+	"icon": "assets/escape_limbo/icon.png",
+	"entrypoints": {
+		"main": [
+			"com.fergusb.escapelimbo.fabric.EscapeLimboFabric"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
