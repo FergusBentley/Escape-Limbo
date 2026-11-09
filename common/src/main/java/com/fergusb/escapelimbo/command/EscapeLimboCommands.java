@@ -2,12 +2,14 @@ package com.fergusb.escapelimbo.command;
 
 import com.fergusb.escapelimbo.EscapeLimbo;
 import com.fergusb.escapelimbo.config.EscapeLimboConfig;
+import com.fergusb.escapelimbo.mana.PlantMana;
 import com.fergusb.escapelimbo.registry.ModItems;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -22,7 +24,8 @@ public final class EscapeLimboCommands {
                 .then(Commands.literal("fragments")
                         .executes(ctx -> giveFragments(ctx.getSource(), 1))
                         .then(Commands.argument("count", IntegerArgumentType.integer(1, 64))
-                                .executes(ctx -> giveFragments(ctx.getSource(), IntegerArgumentType.getInteger(ctx, "count"))))));
+                                .executes(ctx -> giveFragments(ctx.getSource(), IntegerArgumentType.getInteger(ctx, "count")))))
+                .then(Commands.literal("plantmana").executes(ctx -> plantMana(ctx.getSource()))));
     }
 
     private static int showConfig(CommandSourceStack source) {
@@ -37,5 +40,15 @@ public final class EscapeLimboCommands {
         player.addItem(new ItemStack(ModItems.SOUL_FRAGMENT.get(), count));
         source.sendSuccess(() -> Component.literal("Gave " + count + " Soul Fragment" + (count == 1 ? "" : "s")), false);
         return count;
+    }
+
+    private static int plantMana(CommandSourceStack source) {
+        String text = PlantMana.describeNearest(source.getLevel(), BlockPos.containing(source.getPosition()), 16);
+        if (text == null) {
+            source.sendFailure(Component.literal("No Pitcher Plant or Torchflower within 16 blocks"));
+            return 0;
+        }
+        source.sendSuccess(() -> Component.literal(text), false);
+        return 1;
     }
 }

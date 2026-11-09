@@ -3,13 +3,17 @@ package com.fergusb.escapelimbo.fabric;
 import com.fergusb.escapelimbo.EscapeLimbo;
 import com.fergusb.escapelimbo.command.EscapeLimboCommands;
 import com.fergusb.escapelimbo.mana.Mana;
+import com.fergusb.escapelimbo.mana.PlantMana;
 import com.fergusb.escapelimbo.registry.ModCreativeTab;
 import com.fergusb.escapelimbo.survival.Hunger;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerChunkEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -26,7 +30,13 @@ public class EscapeLimboFabric implements ModInitializer {
             for (ItemStack stack : ModCreativeTab.contents()) output.accept(stack);
         });
         CommandRegistrationCallback.EVENT.register((dispatcher, context, selection) -> EscapeLimboCommands.register(dispatcher));
-        ServerTickEvents.END_SERVER_TICK.register(Hunger::tick);
+        ServerTickEvents.END_SERVER_TICK.register(server -> {
+            Hunger.tick(server);
+            PlantMana.tick(server);
+        });
+        ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> PlantMana.onDeath(entity));
+        ServerChunkEvents.CHUNK_LOAD.register((level, chunk, generated) -> PlantMana.onChunkLoad(level, chunk));
+        UseBlockCallback.EVENT.register(PlantMana::onUse);
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> Mana.onJoin(handler.player));
     }
 }
