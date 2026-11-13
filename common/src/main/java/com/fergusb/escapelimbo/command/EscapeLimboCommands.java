@@ -1,6 +1,8 @@
 package com.fergusb.escapelimbo.command;
 
 import com.fergusb.escapelimbo.EscapeLimbo;
+import com.fergusb.escapelimbo.beacon.BeaconRecord;
+import com.fergusb.escapelimbo.beacon.BeaconRegistry;
 import com.fergusb.escapelimbo.config.EscapeLimboConfig;
 import com.fergusb.escapelimbo.mana.PlantMana;
 import com.fergusb.escapelimbo.registry.ModItems;
@@ -25,7 +27,9 @@ public final class EscapeLimboCommands {
                         .executes(ctx -> giveFragments(ctx.getSource(), 1))
                         .then(Commands.argument("count", IntegerArgumentType.integer(1, 64))
                                 .executes(ctx -> giveFragments(ctx.getSource(), IntegerArgumentType.getInteger(ctx, "count")))))
-                .then(Commands.literal("plantmana").executes(ctx -> plantMana(ctx.getSource()))));
+                .then(Commands.literal("plantmana").executes(ctx -> plantMana(ctx.getSource())))
+                .then(Commands.literal("beacons").executes(ctx -> listBeacons(ctx.getSource())))
+        );
     }
 
     private static int showConfig(CommandSourceStack source) {
@@ -50,5 +54,24 @@ public final class EscapeLimboCommands {
         }
         source.sendSuccess(() -> Component.literal(text), false);
         return 1;
+    }
+
+    private static int listBeacons(CommandSourceStack source) {
+        BeaconRegistry registry = BeaconRegistry.get(source.getServer());
+        long now = BeaconRegistry.now(source.getServer());
+        BlockPos origin = BlockPos.containing(source.getPosition());
+        int shown = 0;
+        for (BeaconRecord record : registry.all()) {
+            BlockPos pos = record.pos().pos();
+            if (record.pos().dimension() != source.getLevel().dimension() || pos.distManhattan(origin) > 128) continue;
+            record.advance(now);
+            String line = String.format("%d %d %d: %s, %.1f/%d mana",
+                    pos.getX(), pos.getY(), pos.getZ(), record.state().getSerializedName(), record.mana(), record.capacity());
+            source.sendSuccess(() -> Component.literal(line), false);
+            shown++;
+        }
+        registry.setDirty();
+        if (shown == 0) source.sendSuccess(() -> Component.literal("No Respawn Beacons within 128 blocks"), false);
+        return shown;
     }
 }

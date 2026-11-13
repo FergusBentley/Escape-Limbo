@@ -20,6 +20,10 @@ public final class EscapeLimboConfig {
     public int startingMana = 10; // TODO
     public double passiveHungerPerTick = 0.0033;
     public double otherHungerMultiplier = 0.8;
+    public int beaconDrainTicks = 24000;
+    public int beaconFillPerSecond = 10;
+    public int beaconFadeMana = 30;
+    public boolean sleepDrainsBeacons = true;
 
     public static EscapeLimboConfig load(Path configDir) {
         Path file = configDir.resolve(FILE_NAME);

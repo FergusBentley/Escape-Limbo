@@ -15,12 +15,14 @@ import net.minecraft.world.level.block.Block;
 public final class ModItems {
     public static Supplier<Item> REALITY_FABRIC;
     public static Supplier<Item> SOUL_FRAGMENT;
+    public static Supplier<Item> RESPAWN_BEACON;
 
     private ModItems() {}
 
     public static void register(Platform platform) {
         REALITY_FABRIC = blockItem(platform, "reality_fabric", ModBlocks.REALITY_FABRIC);
         SOUL_FRAGMENT = item(platform, "soul_fragment", Item::new, new Item.Properties());
+        RESPAWN_BEACON = blockItem(platform, "respawn_beacon", ModBlocks.RESPAWN_BEACON);
     }
 
     private static Supplier<Item> item(Platform platform, String name, Function<Item.Properties, Item> factory, Item.Properties properties) {

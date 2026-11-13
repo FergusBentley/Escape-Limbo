@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "escape_limbo:block/respawn_beacon_item"
+  }
+}

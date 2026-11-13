@@ -2,6 +2,7 @@ package com.fergusb.escapelimbo;
 
 import com.fergusb.escapelimbo.config.EscapeLimboConfig;
 import com.fergusb.escapelimbo.platform.Platform;
+import com.fergusb.escapelimbo.registry.ModBlockEntities;
 import com.fergusb.escapelimbo.registry.ModBlocks;
 import com.fergusb.escapelimbo.registry.ModItems;
 import net.minecraft.resources.Identifier;
@@ -20,6 +21,7 @@ public final class EscapeLimbo {
         platform = loaderPlatform;
         config = EscapeLimboConfig.load(platform.configDir());
         ModBlocks.register(platform);
+        ModBlockEntities.register(platform);
         ModItems.register(platform);
     }
 

@@ -1,0 +1,297 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "escape_limbo:block/respawn_beacon_frame"
+      }
+    },
+    {
+      "when": {
+        "fill": "1",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_1"
+      }
+    },
+    {
+      "when": {
+        "fill": "1",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_1_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "2",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_2"
+      }
+    },
+    {
+      "when": {
+        "fill": "2",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_2_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "3",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_3"
+      }
+    },
+    {
+      "when": {
+        "fill": "3",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_3_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "4",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_4"
+      }
+    },
+    {
+      "when": {
+        "fill": "4",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_4_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "5",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_5"
+      }
+    },
+    {
+      "when": {
+        "fill": "5",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_5_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "6",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_6"
+      }
+    },
+    {
+      "when": {
+        "fill": "6",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_6_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "7",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_7"
+      }
+    },
+    {
+      "when": {
+        "fill": "7",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_7_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "8",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_8"
+      }
+    },
+    {
+      "when": {
+        "fill": "8",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_8_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "9",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_9"
+      }
+    },
+    {
+      "when": {
+        "fill": "9",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_9_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "10",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_10"
+      }
+    },
+    {
+      "when": {
+        "fill": "10",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_10_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "11",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_11"
+      }
+    },
+    {
+      "when": {
+        "fill": "11",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_11_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "12",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_12"
+      }
+    },
+    {
+      "when": {
+        "fill": "12",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_12_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "13",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_13"
+      }
+    },
+    {
+      "when": {
+        "fill": "13",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_13_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "14",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_14"
+      }
+    },
+    {
+      "when": {
+        "fill": "14",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_14_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "15",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_15"
+      }
+    },
+    {
+      "when": {
+        "fill": "15",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_15_dim"
+      }
+    },
+    {
+      "when": {
+        "fill": "16",
+        "state": "active"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_16"
+      }
+    },
+    {
+      "when": {
+        "fill": "16",
+        "state": "unprimed|obstructed|empty"
+      },
+      "apply": {
+        "model": "escape_limbo:block/beacon_core_16_dim"
+      }
+    }
+  ]
+}

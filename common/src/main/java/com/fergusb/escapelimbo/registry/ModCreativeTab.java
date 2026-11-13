@@ -15,11 +15,12 @@ public final class ModCreativeTab {
     private ModCreativeTab() {}
 
     public static ItemStack icon() {
-        return new ItemStack(ModItems.SOUL_FRAGMENT.get());
+        return new ItemStack(ModItems.RESPAWN_BEACON.get());
     }
 
     public static List<ItemStack> contents() {
         return List.of(
+                new ItemStack(ModItems.RESPAWN_BEACON.get()),
                 new ItemStack(ModItems.SOUL_FRAGMENT.get()),
                 new ItemStack(ModItems.REALITY_FABRIC.get()));
     }

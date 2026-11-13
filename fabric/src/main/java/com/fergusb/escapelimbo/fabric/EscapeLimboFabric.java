@@ -4,6 +4,7 @@ import com.fergusb.escapelimbo.EscapeLimbo;
 import com.fergusb.escapelimbo.command.EscapeLimboCommands;
 import com.fergusb.escapelimbo.mana.Mana;
 import com.fergusb.escapelimbo.mana.PlantMana;
+import com.fergusb.escapelimbo.network.BeaconFillPayload;
 import com.fergusb.escapelimbo.registry.ModCreativeTab;
 import com.fergusb.escapelimbo.survival.Hunger;
 import net.fabricmc.api.ModInitializer;
@@ -14,6 +15,7 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerChunkEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -24,6 +26,7 @@ public class EscapeLimboFabric implements ModInitializer {
     public void onInitialize() {
         EscapeLimbo.init(new FabricPlatform());
 
+        PayloadTypeRegistry.clientboundPlay().register(BeaconFillPayload.TYPE, BeaconFillPayload.CODEC);
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ModCreativeTab.KEY,
                 FabricCreativeModeTab.builder().title(ModCreativeTab.TITLE).icon(ModCreativeTab::icon).build());
         CreativeModeTabEvents.modifyOutputEvent(ModCreativeTab.KEY).register(output -> {

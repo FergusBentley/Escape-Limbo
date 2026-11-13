@@ -1,6 +1,8 @@
 package com.fergusb.escapelimbo.registry;
 
 import com.fergusb.escapelimbo.EscapeLimbo;
+import com.fergusb.escapelimbo.beacon.BeaconDisplay;
+import com.fergusb.escapelimbo.beacon.RespawnBeaconBlock;
 import com.fergusb.escapelimbo.platform.Platform;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -15,11 +17,19 @@ import net.minecraft.world.level.material.MapColor;
 
 public final class ModBlocks {
     public static Supplier<Block> REALITY_FABRIC;
+    public static Supplier<Block> RESPAWN_BEACON;
 
     private ModBlocks() {}
 
     public static void register(Platform platform) {
         REALITY_FABRIC = block(platform, "reality_fabric", Block::new, limboProperties());
+        RESPAWN_BEACON = block(platform, "respawn_beacon", RespawnBeaconBlock::new, BlockBehaviour.Properties.of()
+                .mapColor(MapColor.DIAMOND)
+                .strength(3.0F)
+                .noLootTable()
+                .noOcclusion()
+                .sound(SoundType.GLASS)
+                .lightLevel(BeaconDisplay::lightLevel));
     }
 
     private static BlockBehaviour.Properties limboProperties() {

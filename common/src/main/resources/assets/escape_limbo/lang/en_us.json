@@ -1,5 +1,6 @@
 {
   "block.escape_limbo.reality_fabric": "Reality Fabric",
   "item.escape_limbo.soul_fragment": "Soul Fragment",
-  "itemGroup.escape_limbo": "Escape Limbo"
+  "itemGroup.escape_limbo": "Escape Limbo",
+  "block.escape_limbo.respawn_beacon": "Respawn Beacon"
 }
