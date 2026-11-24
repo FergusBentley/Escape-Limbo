@@ -10,7 +10,8 @@
   ],
   "client": [
     "ExperienceOrbRendererMixin",
-    "HudMixin"
+    "HudMixin",
+    "LevelRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

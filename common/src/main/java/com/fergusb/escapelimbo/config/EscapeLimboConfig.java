@@ -24,6 +24,7 @@ public final class EscapeLimboConfig {
     public int beaconFillPerSecond = 10;
     public int beaconFadeMana = 30;
     public boolean sleepDrainsBeacons = true;
+    public boolean beamsAboveWeather = true; // If false, clouds and rain render in front of beams
 
     public static EscapeLimboConfig load(Path configDir) {
         Path file = configDir.resolve(FILE_NAME);

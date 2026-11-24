@@ -100,14 +100,23 @@ public final class BeaconRecord {
         return Mth.clamp((int) Math.ceil(pool / capacity() * FILL_LEVELS), 1, FILL_LEVELS);
     }
 
+    private static final double FAINTEST_MANA = 5;
+
     /** The light starts fading below this much mana */
-    private static double flickerThreshold() {
-        return Math.max(6, EscapeLimbo.config().beaconFadeMana);
+    private static double fadeThreshold() {
+        return Math.max(FAINTEST_MANA + 1, EscapeLimbo.config().beaconFadeMana);
+    }
+
+    public float fadeIntensity() {
+        if (state != RespawnBeaconState.ACTIVE) return 0;
+        double threshold = fadeThreshold();
+        if (pool >= threshold) return 0;
+        return (float) Mth.clamp((threshold - pool) / (threshold - FAINTEST_MANA), 0.001, 1.0);
     }
 
     public int lightLevel() {
         if (state != RespawnBeaconState.ACTIVE || pool <= 0) return 0;
-        double threshold = Math.min(flickerThreshold(), capacity());
+        double threshold = Math.min(fadeThreshold(), capacity());
         double light = pool >= threshold
                 ? 6 + 9 * pool / capacity()
                 : (6 + 9 * threshold / capacity()) * pool / threshold;

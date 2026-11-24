@@ -1,6 +1,7 @@
 package com.fergusb.escapelimbo.survival;
 
 import com.fergusb.escapelimbo.EscapeLimbo;
+import com.fergusb.escapelimbo.beacon.BeaconBeams;
 import com.fergusb.escapelimbo.beacon.BeaconRecord;
 import com.fergusb.escapelimbo.beacon.BeaconRegistry;
 import com.fergusb.escapelimbo.beacon.RespawnBeaconBlockEntity;
@@ -25,5 +26,6 @@ public final class NightSkip {
             ServerLevel level = server.getLevel(record.pos().dimension());
             if (level != null && level.isLoaded(record.pos().pos())) RespawnBeaconBlockEntity.refresh(level, record.pos().pos());
         }
+        BeaconBeams.sendNow(server);
     }
 }

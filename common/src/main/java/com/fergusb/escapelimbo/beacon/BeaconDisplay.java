@@ -17,6 +17,7 @@ public final class BeaconDisplay {
     public static final EnumProperty<RespawnBeaconState> STATE = EnumProperty.create("state", RespawnBeaconState.class);
     public static final IntegerProperty FILL = IntegerProperty.create("fill", 0, BeaconRecord.FILL_LEVELS);
     public static final IntegerProperty LIGHT = IntegerProperty.create("light", 0, 15);
+    public static final float PEDESTAL_TOP = 3.0F / 16.0F;
 
     private BeaconDisplay() {}
 

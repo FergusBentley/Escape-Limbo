@@ -41,6 +41,7 @@ public class RespawnBeaconBlockEntity extends BlockEntity {
         super.preRemoveSideEffects(pos, state);
         if (level instanceof ServerLevel serverLevel) {
             BeaconRegistry.get(serverLevel.getServer()).remove(GlobalPos.of(level.dimension(), pos));
+            BeaconBeams.sendNow(serverLevel.getServer());
         }
     }
 }

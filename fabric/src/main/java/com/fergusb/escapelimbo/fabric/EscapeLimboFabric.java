@@ -1,9 +1,11 @@
 package com.fergusb.escapelimbo.fabric;
 
 import com.fergusb.escapelimbo.EscapeLimbo;
+import com.fergusb.escapelimbo.beacon.BeaconBeams;
 import com.fergusb.escapelimbo.command.EscapeLimboCommands;
 import com.fergusb.escapelimbo.mana.Mana;
 import com.fergusb.escapelimbo.mana.PlantMana;
+import com.fergusb.escapelimbo.network.BeaconBeamsPayload;
 import com.fergusb.escapelimbo.network.BeaconFillPayload;
 import com.fergusb.escapelimbo.registry.ModCreativeTab;
 import com.fergusb.escapelimbo.survival.Hunger;
@@ -27,6 +29,7 @@ public class EscapeLimboFabric implements ModInitializer {
         EscapeLimbo.init(new FabricPlatform());
 
         PayloadTypeRegistry.clientboundPlay().register(BeaconFillPayload.TYPE, BeaconFillPayload.CODEC);
+        PayloadTypeRegistry.clientboundPlay().register(BeaconBeamsPayload.TYPE, BeaconBeamsPayload.CODEC);
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ModCreativeTab.KEY,
                 FabricCreativeModeTab.builder().title(ModCreativeTab.TITLE).icon(ModCreativeTab::icon).build());
         CreativeModeTabEvents.modifyOutputEvent(ModCreativeTab.KEY).register(output -> {
@@ -36,6 +39,7 @@ public class EscapeLimboFabric implements ModInitializer {
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             Hunger.tick(server);
             PlantMana.tick(server);
+            BeaconBeams.tick(server);
         });
         ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> PlantMana.onDeath(entity));
         ServerChunkEvents.CHUNK_LOAD.register((level, chunk, generated) -> PlantMana.onChunkLoad(level, chunk));
